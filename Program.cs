@@ -5,10 +5,10 @@ using Sheet;
 var appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 var dbPath = Path.Join(appData, "sheet.etilqs");
 
-// services
+// injectables
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<SheetContext>(options => options.UseSqlite($"Data Source={dbPath}"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddDbContext<SheetContext>(options => options.UseSqlite($"Data Source={dbPath}"));
 
 // init db
 var app = builder.Build();
@@ -20,20 +20,15 @@ using (var scope = app.Services.CreateScope())
 }
 
 // http pipeline
-app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 // endpoints
-app.MapGet("/create", async (SheetContext context) =>
-{
-    context.Characters.Add(new Character() { PlayerName = "Thomas", CharacterName = "Wizard" });
-    await context.SaveChangesAsync();
-    return Results.Json($"Character created.");
-});
+app.MapGet("", () => Results.Redirect("index.html"));
 
-app.MapGet("/stats", async (SheetContext context) =>
+app.MapGet("character/{id}", (SheetContext context, int id) =>
 {
-    var charCount = await context.Characters.CountAsync(); ;
-    return Results.Json($"DB contains {charCount} characters.");
+    var c = context.Characters.Find(id);
+    return Results.Json(context.Characters.Find(id));
 });
 
 app.Run();
