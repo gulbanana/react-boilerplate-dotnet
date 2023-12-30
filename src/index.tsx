@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import Character from './Character';
+import CharacterView from './CharacterView';
 
 let root = createRoot(document.getElementById('app')!);
-root.render(<Character id={1} />);
+root.render(<CharacterView id={1} />);

@@ -24401,38 +24401,56 @@
   // src/index.tsx
   var import_client = __toESM(require_client());
 
-  // src/Character.tsx
+  // src/hooks.ts
   var import_react = __toESM(require_react());
-
-  // src/Character.module.css
-  var bold = "Character_bold";
-
-  // src/Character.tsx
-  var import_jsx_runtime = __toESM(require_jsx_runtime());
-  function Character({ id }) {
-    const [data, setData] = (0, import_react.useState)("");
+  function useFetchJson(endpoint) {
+    let [loading, setLoading] = (0, import_react.useState)(true);
+    let [data, setData] = (0, import_react.useState)(null);
     (0, import_react.useEffect)(() => {
-      const fetchData = async () => {
-        const response = await fetch("http://localhost:5065/character/" + id);
-        const json = await response.text();
+      (async () => {
+        let response = await fetch(endpoint);
+        let json = await response.json();
         setData(json);
-      };
-      fetchData();
-    }, []);
+        setLoading(false);
+      })();
+    }, [endpoint]);
+    if (data) {
+      return loading ? { loading, result: void 0 } : { loading, result: data };
+    } else {
+      return { loading: true, result: void 0 };
+    }
+  }
+
+  // src/CharacterView.module.css
+  var bold = "CharacterView_bold";
+
+  // src/CharacterView.tsx
+  var import_jsx_runtime = __toESM(require_jsx_runtime());
+  function CharacterView({ id }) {
+    let data = useFetchJson("http://localhost:5065/character/" + id);
     return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { className: bold, children: [
         "character id ",
         id
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("pre", { children: data })
+      data.loading ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Loading..." }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+          "Player: ",
+          data.result.playerName
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", { children: [
+          "Character: ",
+          data.result.characterName
+        ] })
+      ] })
     ] });
   }
 
   // src/index.tsx
   var import_jsx_runtime2 = __toESM(require_jsx_runtime());
   var root = (0, import_client.createRoot)(document.getElementById("app"));
-  root.render(/* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Character, { id: 1 }));
+  root.render(/* @__PURE__ */ (0, import_jsx_runtime2.jsx)(CharacterView, { id: 1 }));
 })();
 /*! Bundled license information:
 
