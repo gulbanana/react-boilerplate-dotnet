@@ -1,3 +1,4 @@
+import "./normalize.css";
 import { createRoot } from 'react-dom/client';
 import CharacterView from './CharacterView';
 
