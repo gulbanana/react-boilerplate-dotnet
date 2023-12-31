@@ -7,8 +7,16 @@ var dbPath = Path.Join(appData, "sheet.etilqs");
 
 // injectables
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.AddDbContext<SheetContext>(options => options.UseSqlite($"Data Source={dbPath}"));
+builder.Services
+    .AddDatabaseDeveloperPageExceptionFilter()
+    .AddDbContext<SheetContext>(options => options.UseSqlite($"Data Source={dbPath}"));
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services
+        .AddReverseProxy()
+        .LoadFromConfig(builder.Configuration.GetSection("YARP"));
+}
 
 // init db
 var app = builder.Build();
@@ -20,15 +28,16 @@ using (var scope = app.Services.CreateScope())
 }
 
 // http pipeline
-app.UseStaticFiles();
+API.Map(app);
 
-// endpoints
-app.MapGet("", () => Results.Redirect("index.html"));
-
-app.MapGet("character/{id}", (SheetContext context, int id) =>
+if (app.Environment.IsDevelopment())
 {
-    var c = context.Characters.Find(id);
-    return Results.Json(context.Characters.Find(id));
-});
+    app.MapReverseProxy();
+}
+else
+{
+    app.UseStaticFiles();
+    app.MapGet("", () => Results.Redirect("index.html"));
+}
 
 app.Run();
