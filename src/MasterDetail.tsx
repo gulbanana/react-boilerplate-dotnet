@@ -1,9 +1,9 @@
 import styles from "./MasterDetail.module.css";
-import { useFetchJson } from "./hooks.ts";
-import type Character from "./Character.ts";
-import { useState } from "react";
-import CharacterView from "./CharacterView.tsx";
 import classNames from "classnames";
+import { useState } from "react";
+import { useFetchJson } from "./hooks.ts";
+import CharacterView from "./CharacterView.tsx";
+import type Character from "./Character.ts";
 
 export default function MasterDetail() {
     let list = useFetchJson<Character[]>("http://localhost:5065/character/list");

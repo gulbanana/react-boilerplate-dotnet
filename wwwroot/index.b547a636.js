@@ -27161,12 +27161,12 @@ parcelHelpers.export(exports, "default", ()=>MasterDetail);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _masterDetailModuleCss = require("./MasterDetail.module.css");
 var _masterDetailModuleCssDefault = parcelHelpers.interopDefault(_masterDetailModuleCss);
-var _hooksTs = require("./hooks.ts");
-var _react = require("react");
-var _characterViewTsx = require("./CharacterView.tsx");
-var _characterViewTsxDefault = parcelHelpers.interopDefault(_characterViewTsx);
 var _classnames = require("classnames");
 var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _hooksTs = require("./hooks.ts");
+var _characterViewTsx = require("./CharacterView.tsx");
+var _characterViewTsxDefault = parcelHelpers.interopDefault(_characterViewTsx);
 var _s = $RefreshSig$();
 function MasterDetail() {
     _s();
