@@ -1,41 +1,50 @@
 import styles from "./MasterDetail.module.css";
 import classNames from "classnames";
 import { useState } from "react";
-import { useFetchJson } from "./hooks.ts";
+import { useQuery } from "@tanstack/react-query";
 import CharacterView from "./CharacterView.tsx";
 import type Character from "./Character.ts";
 
 export default function MasterDetail() {
-    let list = useFetchJson<Character[]>("http://localhost:5065/character/list");
-    let [selected, setSelected] = useState<Character | null>(null);
+    const [selected, setSelected] = useState<Character | null>(null);
+    const { isPending, error, data } = useQuery<Character[]>({
+        queryKey: ["character", "list"]
+    });
 
-    if (list.loading) {
+    if (isPending) {
         return <div className={styles.layout}>
             <div className={styles.master}>Loading...</div>
         </div>;
-    } else {
-        let charsByPlayer = list.result.reduce(function (acc, x) {
-            acc[x.playerName] = acc[x.playerName] || [];
-            acc[x.playerName].push(x);
-            return acc;
-        }, Object.create(null));
+    }
 
+    if (error) {
         return <div className={styles.layout}>
-            <div className={styles.master}>
-                {Object.getOwnPropertyNames(charsByPlayer).map(p =>
-                    <div className={styles.playerCharacters}>
-                        <div>{p}</div>
-                        {charsByPlayer[p].map((c: Character) => (selected == c
-                            ? <a className={classNames(styles.characterLink, styles.selectedLink)} key={c.id} onClick={() => setSelected(c)}>{c.characterName}</a>
-                            : <a className={styles.characterLink} key={c.id} onClick={() => setSelected(c)}>{c.characterName}</a>
-                        ))}
-                    </div>
-                )}
-            </div>
-            <div className={styles.detail}>
-                {selected == null ? <></> : <CharacterView id={selected.id} />}
-            </div>
+            <div className={styles.master}>Loading...</div>
         </div>;
     }
+
+    let charsByPlayer = data.reduce(function (acc, x) {
+        acc[x.playerName] = acc[x.playerName] || [];
+        acc[x.playerName].push(x);
+        return acc;
+    }, Object.create(null));
+
+    return <div className={styles.layout}>
+        <div className={styles.master}>
+            {Object.keys(charsByPlayer).map(p =>
+                <div key={p} className={styles.playerCharacters}>
+                    <div>{p}</div>
+                    {charsByPlayer[p].map((c: Character) =>
+                        <a key={c.id} onClick={() => setSelected(c)} className={classNames(styles.characterLink, {
+                            [styles.selectedLink]: selected == c
+                        })}>{c.characterName}</a>
+                    )}
+                </div>
+            )}
+        </div>
+        <div className={styles.detail}>
+            {selected == null ? <></> : <CharacterView id={selected.id} />}
+        </div>
+    </div >;
 }
 

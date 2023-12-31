@@ -1,4 +1,4 @@
-import { useFetchJson } from "./hooks.ts";
+import { useQuery } from "@tanstack/react-query";
 import { header } from "./CharacterView.module.css";
 import type Character from "./Character.ts";
 
@@ -7,14 +7,26 @@ interface Props {
 }
 
 export default function CharacterView({ id }: Props) {
-  let data = useFetchJson<Character>("http://localhost:5065/character/" + id);
+  const { isPending, error, data } = useQuery<Character>({
+    queryKey: ["character", id]
+  });
 
-  return (<div>{data.loading
-    ? <p className={header}>Loading...</p>
-    : <>
-      <p className={header}>{data.result.characterName}</p>
-      {data.result.stats.map(stat => <p>{stat.name}: {stat.value}</p>)}
-    </>
-  }</div>);
+  if (isPending) {
+    return <div>
+      <p className={header}>Loading...</p>
+    </div>;
+  }
+
+  if (error) {
+    return <div>
+      <p className={header}>Error</p>
+      <p>{error.toString()}</p>
+    </div>;
+  }
+
+  return <div>
+    <p className={header}>{data.characterName}</p>
+    {data.stats.map(stat => <p key={stat.id}>{stat.name}: {stat.value}</p>)}
+  </div>;
 }
 
