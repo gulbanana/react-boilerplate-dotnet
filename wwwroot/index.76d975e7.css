@@ -119,7 +119,55 @@ summary {
   display: list-item;
 }
 
-._8xIGDq_bold {
+:root {
+  --shade-7: #40c057;
+  --shade-11: #1b5727;
+  --shade-12: #133d1b;
+}
+
+._7y3gla_layout {
+  border: 2px solid var(--shade-7);
+  border-radius: 8px;
+  grid-template-columns: 20% 1fr;
+  min-height: 50dvh;
+  margin: 4px;
+  display: grid;
+}
+
+._7y3gla_master {
+  border-right: 2px solid var(--shade-7);
+  flex-direction: column;
+  gap: 1em;
+  padding: 4px;
+  display: flex;
+}
+
+._7y3gla_playerCharacters {
+  flex-direction: column;
+  display: flex;
+}
+
+._7y3gla_playerCharacters > div {
+  border-bottom: 1px dashed var(--shade-11);
+}
+
+._7y3gla_characterLink {
+  cursor: pointer;
+  margin-top: 2px;
+  margin-left: 1em;
+  text-decoration: underline;
+}
+
+._7y3gla_selectedLink {
+  text-decoration: none;
+}
+
+._7y3gla_detail {
+  padding: 4px;
+}
+
+._8xIGDq_header {
+  margin-top: 0;
   font-weight: bold;
 }
 

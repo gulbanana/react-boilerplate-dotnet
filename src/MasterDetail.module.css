@@ -1,0 +1,40 @@
+.layout {
+    min-height: 50dvh;
+    margin: 4px;
+    border: 2px solid var(--shade-7);
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 20% 1fr;
+}
+
+.master {
+    padding: 4px;
+    border-right: 2px solid var(--shade-7);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.playerCharacters {
+    display: flex;
+    flex-direction: column;
+
+    &>div {
+        border-bottom: 1px dashed var(--shade-11);
+    }
+}
+
+.characterLink {
+    margin-top: 2px;
+    margin-left: 1em;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.selectedLink {
+    text-decoration: none;
+}
+
+.detail {
+    padding: 4px;
+}

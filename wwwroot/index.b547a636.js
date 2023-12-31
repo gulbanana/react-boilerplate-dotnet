@@ -2945,15 +2945,14 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _normalizeCss = require("./normalize.css");
+var _globalsCss = require("./globals.css");
 var _client = require("react-dom/client");
-var _characterView = require("./CharacterView");
-var _characterViewDefault = parcelHelpers.interopDefault(_characterView);
+var _masterDetail = require("./MasterDetail");
+var _masterDetailDefault = parcelHelpers.interopDefault(_masterDetail);
 let root = (0, _client.createRoot)(document.getElementById("app"));
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _characterViewDefault.default), {
-    id: 1
-}, void 0, false, {
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _masterDetailDefault.default), {}, void 0, false, {
     fileName: "src/index.tsx",
-    lineNumber: 6,
+    lineNumber: 7,
     columnNumber: 13
 }, undefined));
 
@@ -2962,7 +2961,7 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _characterViewDefault.d
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./normalize.css":"cbx85","react-dom/client":"lOjBx","./CharacterView":"5tHYZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./normalize.css":"cbx85","./globals.css":"9dGPe","react-dom/client":"lOjBx","./MasterDetail":"2yeAB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -5667,7 +5666,7 @@ module.exports = require("a569817e6ea559f6");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"cbx85":[function() {},{}],"lOjBx":[function(require,module,exports) {
+},{}],"cbx85":[function() {},{}],"9dGPe":[function() {},{}],"lOjBx":[function(require,module,exports) {
 "use strict";
 var m = require("aaccff5d309d9239");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
@@ -27149,97 +27148,139 @@ module.exports = require("ef03b89c8fe2794e");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"5tHYZ":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$fece = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{}],"2yeAB":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$e601 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$fece.prelude(module);
+$parcel$ReactRefreshHelpers$e601.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>CharacterView);
+parcelHelpers.export(exports, "default", ()=>MasterDetail);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _masterDetailModuleCss = require("./MasterDetail.module.css");
+var _masterDetailModuleCssDefault = parcelHelpers.interopDefault(_masterDetailModuleCss);
 var _hooksTs = require("./hooks.ts");
-var _characterViewModuleCss = require("./CharacterView.module.css");
+var _react = require("react");
+var _characterViewTsx = require("./CharacterView.tsx");
+var _characterViewTsxDefault = parcelHelpers.interopDefault(_characterViewTsx);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
 var _s = $RefreshSig$();
-function CharacterView({ id }) {
+function MasterDetail() {
     _s();
-    let data = (0, _hooksTs.useFetchJson)("http://localhost:5065/character/" + id);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                className: (0, _characterViewModuleCss.bold),
-                children: [
-                    "character id ",
-                    id
-                ]
-            }, void 0, true, {
-                fileName: "src/CharacterView.tsx",
-                lineNumber: 13,
-                columnNumber: 5
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                fileName: "src/CharacterView.tsx",
-                lineNumber: 13,
-                columnNumber: 52
-            }, this),
-            data.loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: "Loading..."
-            }, void 0, false, {
-                fileName: "src/CharacterView.tsx",
-                lineNumber: 15,
-                columnNumber: 7
-            }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: [
-                            "Player: ",
-                            data.result.playerName
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/CharacterView.tsx",
-                        lineNumber: 17,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: [
-                            "Character: ",
-                            data.result.characterName
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/CharacterView.tsx",
-                        lineNumber: 18,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/CharacterView.tsx",
-                lineNumber: 16,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "src/CharacterView.tsx",
-        lineNumber: 12,
-        columnNumber: 11
+    let list = (0, _hooksTs.useFetchJson)("http://localhost:5065/character/list");
+    let [selected, setSelected] = (0, _react.useState)(null);
+    if (list.loading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: (0, _masterDetailModuleCssDefault.default).layout,
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: (0, _masterDetailModuleCssDefault.default).master,
+            children: "Loading..."
+        }, void 0, false, {
+            fileName: "src/MasterDetail.tsx",
+            lineNumber: 14,
+            columnNumber: 13
+        }, this)
+    }, void 0, false, {
+        fileName: "src/MasterDetail.tsx",
+        lineNumber: 13,
+        columnNumber: 16
     }, this);
+    else {
+        let charsByPlayer = list.result.reduce(function(acc, x) {
+            acc[x.playerName] = acc[x.playerName] || [];
+            acc[x.playerName].push(x);
+            return acc;
+        }, Object.create(null));
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: (0, _masterDetailModuleCssDefault.default).layout,
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: (0, _masterDetailModuleCssDefault.default).master,
+                    children: Object.getOwnPropertyNames(charsByPlayer).map((p)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: (0, _masterDetailModuleCssDefault.default).playerCharacters,
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    children: p
+                                }, void 0, false, {
+                                    fileName: "src/MasterDetail.tsx",
+                                    lineNumber: 27,
+                                    columnNumber: 25
+                                }, this),
+                                charsByPlayer[p].map((c)=>selected == c ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                        className: (0, _classnamesDefault.default)((0, _masterDetailModuleCssDefault.default).characterLink, (0, _masterDetailModuleCssDefault.default).selectedLink),
+                                        onClick: ()=>setSelected(c),
+                                        children: c.characterName
+                                    }, c.id, false, {
+                                        fileName: "src/MasterDetail.tsx",
+                                        lineNumber: 29,
+                                        columnNumber: 31
+                                    }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                        className: (0, _masterDetailModuleCssDefault.default).characterLink,
+                                        onClick: ()=>setSelected(c),
+                                        children: c.characterName
+                                    }, c.id, false, {
+                                        fileName: "src/MasterDetail.tsx",
+                                        lineNumber: 30,
+                                        columnNumber: 31
+                                    }, this))
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/MasterDetail.tsx",
+                            lineNumber: 26,
+                            columnNumber: 21
+                        }, this))
+                }, void 0, false, {
+                    fileName: "src/MasterDetail.tsx",
+                    lineNumber: 24,
+                    columnNumber: 13
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: (0, _masterDetailModuleCssDefault.default).detail,
+                    children: selected == null ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {}, void 0, false) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _characterViewTsxDefault.default), {
+                        id: selected.id
+                    }, void 0, false, {
+                        fileName: "src/MasterDetail.tsx",
+                        lineNumber: 36,
+                        columnNumber: 45
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/MasterDetail.tsx",
+                    lineNumber: 35,
+                    columnNumber: 13
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/MasterDetail.tsx",
+            lineNumber: 23,
+            columnNumber: 16
+        }, this);
+    }
 }
-_s(CharacterView, "CfgMTF/4I9JccCYnHKDQu9BJnPI=", false, function() {
+_s(MasterDetail, "4fXm8TjA0WS7eeWUmn0y5cxIKCk=", false, function() {
     return [
         (0, _hooksTs.useFetchJson)
     ];
 });
-_c = CharacterView;
+_c = MasterDetail;
 var _c;
-$RefreshReg$(_c, "CharacterView");
+$RefreshReg$(_c, "MasterDetail");
 
-  $parcel$ReactRefreshHelpers$fece.postlude(module);
+  $parcel$ReactRefreshHelpers$e601.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./hooks.ts":"kxGGL","./CharacterView.module.css":"7s8BI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"kxGGL":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./MasterDetail.module.css":"7a0Lt","./hooks.ts":"kxGGL","react":"21dqq","./CharacterView.tsx":"5tHYZ","classnames":"jocGM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7a0Lt":[function(require,module,exports) {
+module.exports["characterLink"] = `_7y3gla_characterLink`;
+module.exports["detail"] = `_7y3gla_detail`;
+module.exports["layout"] = `_7y3gla_layout`;
+module.exports["master"] = `_7y3gla_master`;
+module.exports["playerCharacters"] = `_7y3gla_playerCharacters`;
+module.exports["selectedLink"] = `_7y3gla_selectedLink`;
+
+},{}],"kxGGL":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$6eea = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27449,8 +27490,116 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"7422ead32dcc1e6b":"786KC"}],"7s8BI":[function(require,module,exports) {
-module.exports["bold"] = `_8xIGDq_bold`;
+},{"7422ead32dcc1e6b":"786KC"}],"5tHYZ":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$fece = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$fece.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>CharacterView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _hooksTs = require("./hooks.ts");
+var _characterViewModuleCss = require("./CharacterView.module.css");
+var _s = $RefreshSig$();
+function CharacterView({ id }) {
+    _s();
+    let data = (0, _hooksTs.useFetchJson)("http://localhost:5065/character/" + id);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: data.loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            className: (0, _characterViewModuleCss.header),
+            children: "Loading..."
+        }, void 0, false, {
+            fileName: "src/CharacterView.tsx",
+            lineNumber: 13,
+            columnNumber: 7
+        }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    className: (0, _characterViewModuleCss.header),
+                    children: data.result.characterName
+                }, void 0, false, {
+                    fileName: "src/CharacterView.tsx",
+                    lineNumber: 15,
+                    columnNumber: 7
+                }, this),
+                data.result.stats.map((stat)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: [
+                            stat.name,
+                            ": ",
+                            stat.value
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/CharacterView.tsx",
+                        lineNumber: 16,
+                        columnNumber: 38
+                    }, this))
+            ]
+        }, void 0, true)
+    }, void 0, false, {
+        fileName: "src/CharacterView.tsx",
+        lineNumber: 12,
+        columnNumber: 11
+    }, this);
+}
+_s(CharacterView, "CfgMTF/4I9JccCYnHKDQu9BJnPI=", false, function() {
+    return [
+        (0, _hooksTs.useFetchJson)
+    ];
+});
+_c = CharacterView;
+var _c;
+$RefreshReg$(_c, "CharacterView");
+
+  $parcel$ReactRefreshHelpers$fece.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","./hooks.ts":"kxGGL","./CharacterView.module.css":"7s8BI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7s8BI":[function(require,module,exports) {
+module.exports["header"] = `_8xIGDq_header`;
+
+},{}],"jocGM":[function(require,module,exports) {
+/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/ /* global define */ (function() {
+    "use strict";
+    var hasOwn = {}.hasOwnProperty;
+    function classNames() {
+        var classes = "";
+        for(var i = 0; i < arguments.length; i++){
+            var arg = arguments[i];
+            if (arg) classes = appendClass(classes, parseValue(arg));
+        }
+        return classes;
+    }
+    function parseValue(arg) {
+        if (typeof arg === "string" || typeof arg === "number") return arg;
+        if (typeof arg !== "object") return "";
+        if (Array.isArray(arg)) return classNames.apply(null, arg);
+        if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes("[native code]")) return arg.toString();
+        var classes = "";
+        for(var key in arg)if (hasOwn.call(arg, key) && arg[key]) classes = appendClass(classes, key);
+        return classes;
+    }
+    function appendClass(value, newClass) {
+        if (!newClass) return value;
+        if (value) return value + " " + newClass;
+        return value + newClass;
+    }
+    if (0, module.exports) {
+        classNames.default = classNames;
+        module.exports = classNames;
+    } else if (typeof define === "function" && typeof define.amd === "object" && define.amd) // register as 'classnames', consistent with npm package name
+    define("classnames", [], function() {
+        return classNames;
+    });
+    else window.classNames = classNames;
+})();
 
 },{}]},["1VRy3","1xC6H","4aBH6"], "4aBH6", "parcelRequire05df")
 
